@@ -1,8 +1,6 @@
 import time
-
 from selenium.webdriver.common.by import By
 from pages.base_page import Base_page
-
 from selenium.webdriver.support.select import Select
 
 

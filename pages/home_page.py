@@ -12,7 +12,11 @@ class Home_page(Base_page):
     CHECK_REVIEWS = (By.XPATH, "//div[@class='reviews-actions']")
     SUBMIT = (By.XPATH,'//button[@class="action submit primary"]')
     CHECK_MSG =(By.XPATH,'//div[@class="message-success success message"]')
-
+    ARROW = (By.XPATH,"//a[@class='action skip contentarea']/following-sibling::ul/li[2]/span/button")
+    OUT_MSG = (By.XPATH,"//*[@id='maincontent']/div[3]/div/p")
+    SIGN_IN = (By.XPATH,"//a[@class='action skip contentarea']/following-sibling::ul/li[2]/a")
+    ADD_COMPARE = (By.XPATH,'//*[@id="maincontent"]/div[2]/div/div[1]/div[5]/div/a[2]')
+    WISH_LIST = (By.XPATH,'/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[2]')
 
     def navigate_to_homepage(self):
 
@@ -67,3 +71,37 @@ class Home_page(Base_page):
         self.driver.find_element(*self.SUBMIT).click()
         message = self.driver.find_element(*self.CHECK_MSG)
         assert message.is_displayed(),"Error, message not found!"
+
+
+    def click_arrow(self):
+        self.driver.find_element(*self.ARROW).click()
+        time.sleep(4)
+
+    def sign_out(self):
+        self.driver.find_element(By.LINK_TEXT,"Sign Out").click()
+
+    def sign_out_msg(self):
+        signout_msg = self.driver.find_element(*self.OUT_MSG)
+        assert signout_msg.is_displayed(),"Error, message not found!"
+
+    def sign_in(self):
+        self.driver.find_element(*self.SIGN_IN).click()
+
+    def click_item(self):
+        self.driver.find_elements(By.CLASS_NAME, "product-item-info")[0].click()
+
+    def add_compare(self):
+        self.driver.find_element(*self.ADD_COMPARE).click()
+
+    def check_confirmation(self):
+        confi = self.driver.find_element(By.XPATH, "//div[@role='alert']")
+        assert confi.is_displayed(), "Error, message not found!"
+
+    def compare_products(self):
+        self.driver.find_element(By.XPATH,"//a[@class='action compare']").click()
+
+    def to_wish_list(self):
+        self.driver.find_element(*self.WISH_LIST).click()
+
+
+
