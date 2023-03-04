@@ -62,17 +62,22 @@ Feature: Testing the functionality of magento.softwaretestingboard.com webpage
 
   @TEST6
   Scenario: Sign out from magento.softwaretestingboard.com
+
     When Home page: Click on the small arrow near the name
     When Home page: Click on the Sign out button
     Then Home page: Check that the sign out message is displayed
+
   @TEST7
   Scenario: Sign in to magento.softwaretestingboard.com
+
     When Home page: Click on the sign in button
     When Login page: I enter the email address, "mihaita.vra@gmail.com"
     When Login page: I enter the password, "PARola123"
     Then Login page: Click on the Sign in button
+
   @TEST8
   Scenario Outline: Add items to Compare Products section
+
     When Home page: I search for a specific "<item_name>"
     Then Home page: Click on the desired item
     When Home page: Click the Add to compare button
@@ -81,13 +86,17 @@ Feature: Testing the functionality of magento.softwaretestingboard.com webpage
     |item_name                   |
     |Aether Gym Pant             |
     |Livingston All-Purpose Tight|
+
   @TEST9
   Scenario: Add one item to wish list and delete the other one
+
     When Home page: Click on the Compare Products link
     Then Compare page: Cancel one item from the compare section
     Then Compare page: Add the other item to the wish list
+
   @TEST10
   Scenario: Share your wish list with your friends
+    
     When Home page: Click on the small arrow near  the name
     Then Home page: Click on the  Your Wish list button
     When Wish page: Click on the Share Wish List button
